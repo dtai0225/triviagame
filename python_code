@@ -1,0 +1,58 @@
+print("welcome to the quiz bowl! Are you ready?")
+
+import time
+
+time.sleep(3)
+
+import requests
+r=requests.get("https://opentdb.com/api.php?amount=10&category=20&difficulty=easy&type=multiple")
+r.status_code
+
+
+import json
+quiz_question=json.loads(r.text)
+
+import random
+
+
+
+
+while True:
+    rand_int=random.randint(0,9)
+    incorrect_answers=quiz_question["results"][rand_int]["incorrect_answers"]
+    incorrect_answers.append(quiz_question["results"][rand_int]["correct_answer"])
+    qlist=quiz_question["results"][rand_int]["incorrect_answers"]
+    random.shuffle(qlist)
+    for list in qlist:
+        print(list)
+    guess=input(quiz_question["results"][rand_int]["question"]+"(choose one of the options above)")
+
+    while True:
+        
+        if guess==quiz_question["results"][rand_int]["correct_answer"]:
+            print("That's right!")
+            break
+           
+                
+        else:
+            print("Sorry! That's wrong!")
+            break
+
+    keep_on=input("Press enter to keep playing or type 'quit' to stop the game")
+    if keep_on=="quit":
+        break
+            
+        
+
+
+        
+print ("Thank you for playing!I hate to see you go...but I love to watch you leave.")
+
+    
+
+
+
+
+
+
+
