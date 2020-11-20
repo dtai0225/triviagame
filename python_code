@@ -46,7 +46,7 @@ while True:
 
 
         
-print ("Thank you for playing!I hate to see you go...but I love to watch you leave.")
+print ("Thank you for playing!I hate to see you go...")
 
     
 
